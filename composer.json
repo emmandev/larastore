@@ -7,6 +7,7 @@
     "require": {
         "php": "^7.1.3",
         "fideloper/proxy": "^4.0",
+        "jeroen-g/laravel-packager": "^2.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0"
     },
@@ -24,11 +25,13 @@
             "database/factories"
         ],
         "psr-4": {
+            "Emmandev\\Larastore\\": "packages/Emmandev/Larastore/src",
             "App\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "Emmandev\\Larastore\\": "packages/Emmandev/Larastore/src",
             "Tests\\": "tests/"
         }
     },
