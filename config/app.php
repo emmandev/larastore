@@ -150,6 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Emmandev\Larastore\LarastoreServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -25,11 +25,13 @@
             "database/factories"
         ],
         "psr-4": {
+            "Emmandev\\Larastore\\": "packages/Emmandev/Larastore/src",
             "App\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "Emmandev\\Larastore\\": "packages/Emmandev/Larastore/src",
             "Tests\\": "tests/"
         }
     },

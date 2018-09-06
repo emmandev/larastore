@@ -1,0 +1,41 @@
+{
+    "name": "emmandev/larastore",
+    "description": ":description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emmanuel Tierra",
+            "email": "emmantierra.dev@gmail.com",
+            "homepage": "https://github.com/emmandev"
+        }
+    ],
+    "homepage": "https://github.com/emmandev/larastore",
+    "keywords": ["Laravel", "Larastore"],
+    "require": {
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "orchestra/testbench": "~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emmandev\\Larastore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Emmandev\\Larastore\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Emmandev\\Larastore\\LarastoreServiceProvider"
+            ],
+            "aliases": {
+                "Larastore": "Emmandev\\Larastore\\Facades\\Larastore"
+            }
+        }
+    }
+}
