@@ -21,6 +21,14 @@ class CreateProductTypeAttributesTable extends Migration
             $table->string('slug')->unique();
             $table->timestamps();
         });
+
+        DB::table('product_type_attributes')->insert(
+            array(
+                'product_type_id' => 1,
+                'name' => 'Sale price',
+                'slug' => 'sale-price'
+            )
+        );
     }
 
     /**
