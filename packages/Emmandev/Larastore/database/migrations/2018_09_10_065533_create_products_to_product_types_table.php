@@ -18,7 +18,6 @@ class CreateProductsToProductTypesTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('product_type_id')->unsigned();
             $table->foreign('product_type_id')->references('id')->on('product_types')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

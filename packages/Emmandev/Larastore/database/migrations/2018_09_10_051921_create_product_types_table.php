@@ -17,7 +17,6 @@ class CreateProductTypesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description')->nullable();
-            $table->timestamps();
         });
 
         DB::table('product_types')->insert(

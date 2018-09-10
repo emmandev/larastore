@@ -19,7 +19,6 @@ class CreateProductTypeAttributesTable extends Migration
             $table->foreign('product_type_id')->references('id')->on('product_types')->onDelete('cascade');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->timestamps();
         });
 
         DB::table('product_type_attributes')->insert(
