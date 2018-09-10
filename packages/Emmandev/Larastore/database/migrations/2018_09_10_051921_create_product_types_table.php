@@ -19,6 +19,13 @@ class CreateProductTypesTable extends Migration
             $table->text('description')->nullable()->default('');
             $table->timestamps();
         });
+
+        DB::table('product_types')->insert(
+            array(
+                'name' => 'All',
+                'description' => 'Default type for all products.'
+            )
+        );
     }
 
     /**
