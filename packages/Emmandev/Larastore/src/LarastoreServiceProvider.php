@@ -26,6 +26,10 @@ class LarastoreServiceProvider extends ServiceProvider
                 __DIR__.'/../config/larastore.php' => config_path('larastore.php'),
             ], 'larastore.config');
 
+            $this->publishes([
+                __DIR__.'/Models' => app_path('Models'),
+            ], 'larastore.models');
+
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/emmandev'),
