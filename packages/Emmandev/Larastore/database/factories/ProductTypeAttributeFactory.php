@@ -7,6 +7,6 @@ $factory->define(App\Models\ProductTypeAttribute::class, function (Faker $faker)
 
     return [
         'name' => $name,
-        'slug' => str_slig($name)
+        'slug' => str_slug($name)
     ];
 });
