@@ -10,8 +10,7 @@ class ProductTypeAttribute extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product')
-                    ->as('product_metas')
+        return $this->belongsToMany('App\Models\Product', 'product_metas')
                     ->withPivot('value');
     }
 
