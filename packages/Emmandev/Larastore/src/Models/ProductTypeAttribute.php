@@ -15,7 +15,7 @@ class ProductTypeAttribute extends Model
                     ->withPivot('value');
     }
 
-    public function productType()
+    public function type()
     {
         return $this->belongsTo('App\ProductType');
     }
