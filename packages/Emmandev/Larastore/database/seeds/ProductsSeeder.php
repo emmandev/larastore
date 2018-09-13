@@ -30,7 +30,7 @@ class ProductsSeeder extends Seeder
             $types = $productTypes->random(rand(1, 5));
 
             $types->each(function ($type) use ($product){
-                $product->atrributes()->attach($type->attributes()->pluck('id')->toArray());
+                $product->metas()->attach($type->attributes()->pluck('id')->toArray());
             });
 
             $product->types()->attach($types->pluck('id')->toArray());
