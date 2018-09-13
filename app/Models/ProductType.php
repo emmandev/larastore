@@ -10,12 +10,12 @@ class ProductType extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product')
+        return $this->belongsToMany('App\Models\Product')
                     ->as('products_to_product_types');
     }
 
     public function attributes()
     {
-        return $this->hasMany('App\ProductTypeAttribute');
+        return $this->hasMany('App\Models\ProductTypeAttribute');
     }
 }

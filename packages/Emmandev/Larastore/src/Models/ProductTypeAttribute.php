@@ -10,13 +10,13 @@ class ProductTypeAttribute extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product')
+        return $this->belongsToMany('App\Models\Product')
                     ->as('product_metas')
                     ->withPivot('value');
     }
 
     public function type()
     {
-        return $this->belongsTo('App\ProductType');
+        return $this->belongsTo('App\Models\ProductType');
     }
 }
