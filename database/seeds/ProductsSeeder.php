@@ -12,17 +12,17 @@ class ProductsSeeder extends Seeder
     public function run()
     {
         // generate products
-        factory(App\Product::class, 10)->create();
+        factory(App\Models\Product::class, 10)->create();
 
         // generate product types
-        factory(App\ProductType::class, 5)->create();
+        factory(App\Models\ProductType::class, 5)->create();
 
-        $products = App\Product::all();
-        $productTypes = App\ProductType::all();
+        $products = App\Models\Product::all();
+        $productTypes = App\Models\ProductType::all();
 
         // generate attributes for each product type
         $productTypes->each(function ($type) {
-            factory(App\ProductTypeAttribute::class, rand(1, 3))->create(['product_type_id' => $type->id]);
+            factory(App\Models\ProductTypeAttribute::class, rand(1, 3))->create(['product_type_id' => $type->id]);
         });
 
         // loop through the generated products and give them product types and attributes
