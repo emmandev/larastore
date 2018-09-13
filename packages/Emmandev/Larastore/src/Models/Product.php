@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    public function productTypes()
+    public function types()
     {
         return $this->belongsToMany('App\ProductType')
                     ->as('products_to_product_types');
     }
 
-    public function productAtrributes()
+    public function attributes()
     {
         return $this->belongsToMany('App\ProductTypeAttribute')
                     ->as('product_metas')
