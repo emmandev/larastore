@@ -8,7 +8,7 @@ class Product extends Model
 {
     public function types()
     {
-        return $this->belongsToMany('App\Models\ProductType', 'products_to_product_types');
+        return $this->belongsToMany('App\Models\ProductType', 'product_product_type');
     }
 
     public function metas()
