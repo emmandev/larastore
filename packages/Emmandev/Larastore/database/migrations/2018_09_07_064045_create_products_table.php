@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->integer('price')->unsigned();
             $table->integer('stock')->unsigned();
+            $table->integer('status')->unsigned();
             $table->timestamps();
         });
     }
