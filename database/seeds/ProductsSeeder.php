@@ -30,7 +30,21 @@ class ProductsSeeder extends Seeder
             $types = $productTypes->random(rand(1, 5));
 
             $types->each(function ($type) use ($product){
-                $product->metas()->attach($type->attributes()->pluck('id')->toArray());
+                // get the ids of the attributes
+                $metas = $type->attributes()->pluck('id');
+
+                // get array of ids
+                $ids = $metas->toArray();
+
+                // create a number of values based on the number of ids
+                $values = data_set($ids, '*', ['value' => str_random(5)]);
+
+                // insert the values to the collection
+                $metas = $metas->combine($values);
+                $metas->all();
+
+                // insert the attributes to the product
+                $product->metas()->attach($metas);
             });
 
             $product->types()->attach($types->pluck('id')->toArray());
