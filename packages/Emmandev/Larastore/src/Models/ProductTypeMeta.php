@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ProductTypeAttribute extends Model
+class ProductTypeMeta extends Model
 {
     public $timestamps = false;
 
