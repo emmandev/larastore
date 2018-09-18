@@ -10,8 +10,7 @@ class ProductType extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product')
-                    ->as('product_product_type');
+        return $this->belongsToMany('App\Models\Product');
     }
 
     public function metas()
