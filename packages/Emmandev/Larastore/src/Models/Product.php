@@ -13,7 +13,7 @@ class Product extends Model
 
     public function metas()
     {
-        return $this->belongsToMany('App\Models\ProductTypeAttribute', 'product_metas')
+        return $this->belongsToMany('App\Models\ProductTypeMeta', 'product_metas')
                     ->withPivot('value');
     }
 }

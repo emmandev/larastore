@@ -14,8 +14,8 @@ class ProductType extends Model
                     ->as('product_product_type');
     }
 
-    public function attributes()
+    public function metas()
     {
-        return $this->hasMany('App\Models\ProductTypeAttribute');
+        return $this->hasMany('App\Models\ProductTypeMeta');
     }
 }
