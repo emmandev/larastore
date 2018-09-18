@@ -26,6 +26,16 @@ class LarastoreServiceProvider extends ServiceProvider
                 __DIR__.'/../config/larastore.php' => config_path('larastore.php'),
             ], 'larastore.config');
 
+            // Publishing the factories.
+            $this->publishes([
+                __DIR__.'/../database/factories' => database_path('factories'),
+            ], 'larastore.factories');
+
+            // Publishing the seeds.
+            $this->publishes([
+                __DIR__.'/../database/seeds' => database_path('seeds'),
+            ], 'larastore.seeds');
+
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/emmandev'),
