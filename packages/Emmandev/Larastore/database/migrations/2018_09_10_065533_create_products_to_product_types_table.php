@@ -13,7 +13,7 @@ class CreateProductsToProductTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('products_to_product_types', function (Blueprint $table) {
+        Schema::create('product_product_type', function (Blueprint $table) {
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->integer('product_type_id')->unsigned();
@@ -28,6 +28,6 @@ class CreateProductsToProductTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_to_product_types');
+        Schema::dropIfExists('product_product_type');
     }
 }
