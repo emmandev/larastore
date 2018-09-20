@@ -37,6 +37,6 @@ class CreateProductTypeAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_type_attributes');
+        Schema::dropIfExists('product_type_metas');
     }
 }
