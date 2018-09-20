@@ -17,8 +17,8 @@ class CreateProductMetasTable extends Migration
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->integer('product_type_attribute_id')->unsigned();
-            $table->foreign('product_type_attribute_id')->references('id')->on('product_type_attributes')->onDelete('cascade');
+            $table->integer('product_type_meta_id')->unsigned();
+            $table->foreign('product_type_meta_id')->references('id')->on('product_type_metas')->onDelete('cascade');
             $table->string('value')->nullable();
         });
     }

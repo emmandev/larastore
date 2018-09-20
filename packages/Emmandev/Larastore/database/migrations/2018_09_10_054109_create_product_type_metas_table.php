@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductTypeAttributesTable extends Migration
+class CreateProductTypeMetasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProductTypeAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_type_attributes', function (Blueprint $table) {
+        Schema::create('product_type_metas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_type_id')->unsigned();
             $table->foreign('product_type_id')->references('id')->on('product_types')->onDelete('cascade');
@@ -21,7 +21,7 @@ class CreateProductTypeAttributesTable extends Migration
             $table->string('slug')->unique();
         });
 
-        DB::table('product_type_attributes')->insert(
+        DB::table('product_type_metas')->insert(
             array(
                 'product_type_id' => 1,
                 'name' => 'Sale price',
@@ -37,6 +37,6 @@ class CreateProductTypeAttributesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_type_attributes');
+        Schema::dropIfExists('product_type_metas');
     }
 }
