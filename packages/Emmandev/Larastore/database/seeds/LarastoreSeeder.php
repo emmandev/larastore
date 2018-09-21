@@ -54,7 +54,9 @@ class LarastoreSeeder extends Seeder
         });
 
         // generate orders
-        factory(App\Models\Order::class, 10)->create();
+        App\Models\User::all()->random(10)->each(function ($user) {
+            $user->orders()->save(factory(App\Models\Order::class, rand(1, 3))->create());
+        });
 
         $orders = App\Models\Order::all();
 
