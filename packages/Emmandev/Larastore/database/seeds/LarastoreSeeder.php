@@ -49,5 +49,47 @@ class LarastoreSeeder extends Seeder
 
             $product->types()->attach($types->pluck('id')->toArray());
         });
+
+        // generate orders
+        factory(App\Models\Order::class, 10)->create();
+
+        $orders = App\Models\Order::all();
+
+        $orders->each(function ($order) use ($products) {
+            $order_products = $products->where('stock', '>', 0)->random(rand(1, 5));
+
+            // stop adding products to orders if there are no more products with stock
+            if ($order_products->isEmpty()) return false;
+
+            // add products to the order
+            $order_products->each(function ($product) use ($order) {
+                // number of products to buy
+                $qty = rand(1, 10);
+
+                // check the product's stock
+                if ($product->stock < $qty) {
+                    $qty = $product->stock;
+                }
+
+                // decrease the product's stock
+                $product->stock -= $qty;
+                $product->save();
+
+                // get total price
+                $total = $product->price * $qty;
+
+                $order->products()->attach(
+                    $product->id,
+                    [
+                        'price' => $product->price,
+                        'quantity' => $qty,
+                        'total' => $total
+                    ]
+                );
+            });
+        });
+
+        // remove orders without products
+        $orders->doesntHave('products')->delete();
     }
 }
