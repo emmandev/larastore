@@ -11,6 +11,9 @@ class LarastoreSeeder extends Seeder
      */
     public function run()
     {
+        // generate users
+        factory(App\Models\User::class, 20)->create();
+
         // generate products
         factory(App\Models\Product::class, 10)->create();
 
@@ -56,6 +59,10 @@ class LarastoreSeeder extends Seeder
         $orders = App\Models\Order::all();
 
         $orders->each(function ($order) use ($products) {
+            // attach user
+            $order->user()->attach(App\Models\User::random(1));
+
+            // get random products with stock
             $order_products = $products->where('stock', '>', 0)->random(rand(1, 5));
 
             // stop adding products to orders if there are no more products with stock
