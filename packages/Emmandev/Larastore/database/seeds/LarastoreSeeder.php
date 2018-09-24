@@ -88,7 +88,7 @@ class LarastoreSeeder extends Seeder
                     [
                         'price' => $product->price,
                         'quantity' => $qty,
-                        'total' => $total
+                        'total_price' => $total
                     ]
                 );
             });
