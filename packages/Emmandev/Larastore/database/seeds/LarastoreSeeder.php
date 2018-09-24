@@ -11,6 +11,9 @@ class LarastoreSeeder extends Seeder
      */
     public function run()
     {
+        // generate users
+        factory(App\Models\User::class, 20)->create();
+
         // generate products
         factory(App\Models\Product::class, 10)->create();
 
