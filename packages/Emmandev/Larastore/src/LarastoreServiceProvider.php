@@ -41,6 +41,11 @@ class LarastoreServiceProvider extends ServiceProvider
                 __DIR__.'/../database/seeds' => database_path('seeds'),
             ], 'larastore.seeds');
 
+            // Publishing the api resources.
+            $this->publishes([
+                __DIR__.'/Resources' => app_path('Http/Resources'),
+            ], 'larastore.resources');
+
             // Publishing the views.
             /*$this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/emmandev'),
