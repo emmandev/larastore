@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ProductMetaCollection;
+use App\Http\Resources\ProductProductTypeCollection;
 
 class Product extends JsonResource
 {
@@ -22,6 +24,20 @@ class Product extends JsonResource
             'slug' => $this->slug,
             'price' => $this->price,
             'stock' => $this->stock,
+        ];
+    }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function with($request)
+    {
+        return [
+            'metas' => ProductMetaCollection::make($this->metas),
+            'types' => ProductProductTypeCollection::make($this->types),
         ];
     }
 }
