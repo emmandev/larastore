@@ -16,9 +16,9 @@ class OrderProduct extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->name,
-            'sku' => $this->sku,
+            'name' => ($this->name ?? $this->product->name),
+            'slug' => ($this->slug ?? $this->product->slug),
+            'sku' => ($this->sku ?? $this->product->sku),
             'price' => $this->whenPivotLoaded('order_product', function () {
                 return $this->pivot->price;
             }),
