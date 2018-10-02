@@ -21,8 +21,10 @@ class ProductProductType extends JsonResource
 
     public function with($request)
     {
-        return [
+        $wrap = self::$wrap ?? 'data';
+
+        return [$wrap => [
             'description' => $this->description
-        ];
+        ]];
     }
 }

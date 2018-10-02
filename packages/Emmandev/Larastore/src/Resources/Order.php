@@ -31,10 +31,12 @@ class Order extends JsonResource
      */
     public function with($request)
     {
-        return [
+        $wrap = self::$wrap ?? 'data';
+
+        return [$wrap => [
             'metas' => OrderMetaCollection::make($this->metas),
             'products' => OrderProductCollection::make($this->products),
             'user' => new UserResource($this->user)
-        ];
+        ]];
     }
 }

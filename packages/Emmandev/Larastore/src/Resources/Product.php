@@ -35,9 +35,11 @@ class Product extends JsonResource
      */
     public function with($request)
     {
-        return [
+        $wrap = self::$wrap ?? 'data';
+
+        return [$wrap => [
             'metas' => ProductMetaCollection::make($this->metas),
             'types' => ProductProductTypeCollection::make($this->types),
-        ];
+        ]];
     }
 }
