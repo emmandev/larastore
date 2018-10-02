@@ -10,4 +10,9 @@ class OrderProduct extends Pivot
     {
         return $this->hasMany('App\Models\OrderProductMeta');
     }
+
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }
