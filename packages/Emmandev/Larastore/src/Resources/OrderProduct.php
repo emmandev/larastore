@@ -19,9 +19,15 @@ class OrderProduct extends JsonResource
             'name' => $this->name,
             'slug' => $this->name,
             'sku' => $this->sku,
-            'price' => $this->pivot->price,
-            'quantity' => $this->pivot->quantity,
-            'total_price' => $this->pivot->total_price
+            'price' => $this->whenPivotLoaded('order_product', function () {
+                return $this->pivot->price;
+            }),
+            'quantity' => $this->whenPivotLoaded('order_product', function () {
+                return $this->pivot->quantity;
+            }),
+            'total_price' => $this->whenPivotLoaded('order_product', function () {
+                return $this->pivot->total_price;
+            }),
         ];
     }
 }
