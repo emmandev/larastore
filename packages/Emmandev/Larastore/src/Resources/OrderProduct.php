@@ -30,4 +30,22 @@ class OrderProduct extends JsonResource
             }),
         ];
     }
+
+    /**
+     * Get additional data that should be returned with the resource array.
+     *
+     * @param \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function with($request)
+    {
+        $wrap = self::$wrap ?? 'data';
+
+        return [$wrap => [
+            'price' => $this->price,
+            'quantity' => $this->quantity,
+            'total_price' => $this->total_price,
+            'meta' => OrderProductMetaCollection::make($this->metas)
+        ]];
+    }
 }
