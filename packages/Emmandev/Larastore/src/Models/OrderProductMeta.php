@@ -8,6 +8,6 @@ class OrderProductMeta extends Model
 {
     public function orderProduct()
     {
-        return $this->belongsTo('App\Model\OrderProduct');
+        return $this->belongsTo('App\Models\OrderProduct');
     }
 }
