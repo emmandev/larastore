@@ -31,6 +31,10 @@ class LarastoreServiceProvider extends ServiceProvider
                 __DIR__.'/Models' => app_path('Models'),
             ], 'larastore.models');
 
+            $this->publishes([
+                __DIR__.'/Traits' => app_path('Http/Traits'),
+            ], 'larastore.traits');
+
             // Publishing the factories.
             $this->publishes([
                 __DIR__.'/../database/factories' => database_path('factories'),
