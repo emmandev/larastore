@@ -19,6 +19,13 @@ class Order extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user_id' => $this->user->id,
+            'products_count' => $this->products()->pluck('quantity')->reduce(function ($carry, $item) {
+                return $carry + $item;
+            }),
+            'products_price_total' => $this->products()->pluck('total_price')->reduce(function ($carry, $item) {
+                return $carry + $item;
+            }),
             'status' => $this->status,
         ];
     }
