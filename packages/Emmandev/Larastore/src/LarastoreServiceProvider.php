@@ -16,7 +16,7 @@ class LarastoreServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'emmandev');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'emmandev');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -44,6 +44,11 @@ class LarastoreServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../database/seeds' => database_path('seeds'),
             ], 'larastore.seeds');
+
+            // Publishing the api resources.
+            $this->publishes([
+                __DIR__.'/Resources' => app_path('Http/Resources'),
+            ], 'larastore.resources');
 
             // Publishing the views.
             /*$this->publishes([
