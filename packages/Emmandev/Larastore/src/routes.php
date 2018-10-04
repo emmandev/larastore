@@ -45,6 +45,7 @@ Route::group(['prefix' => 'api'], function () {
         });
 
         Route::get('products/{product}/metas/{meta}', function (App\Models\Product $product, App\Models\ProductTypeMeta $meta) {
+            $meta = $product->metas()->where('product_type_meta_id', $meta->id)->firstOrFail();
             return new ProductTypeMetaResource($meta);
         });
 
