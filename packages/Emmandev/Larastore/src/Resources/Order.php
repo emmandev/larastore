@@ -23,7 +23,7 @@ class Order extends JsonResource
             'products_count' => $this->products()->pluck('quantity')->reduce(function ($carry, $item) {
                 return $carry + $item;
             }),
-            'products_price_total' => $this->products()->pluck('total_price')->reduce(function ($carry, $item) {
+            'products_price_total' => collect($this->products)->pluck('pivot.total_price')->reduce(function ($carry, $item) {
                 return $carry + $item;
             }),
             'status' => $this->status,
