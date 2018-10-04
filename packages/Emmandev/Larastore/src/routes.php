@@ -24,7 +24,8 @@ Route::group(['prefix' => 'api'], function () {
         });
 
         Route::get('orders/{order}/products/{orderProduct}', function (App\Models\Order $order, App\Models\OrderProduct $orderProduct) {
-            return new OrderProductResource($orderProduct);
+            $product = App\Models\OrderProduct::where('order_id', $order->id)->where('product_id', $orderProduct->id)->firstOrFail();
+            return new OrderProductResource($product);
         });
 
         Route::get('orders/{order}/products', function (App\Models\Order $order) {
