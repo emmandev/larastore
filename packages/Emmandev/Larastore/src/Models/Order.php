@@ -18,7 +18,7 @@ class Order extends Model
                     ->withPivot('price', 'quantity', 'total_price');
     }
 
-    public function metas()
+    public function meta()
     {
         return $this->hasOne('App\Models\OrderMeta');
     }
