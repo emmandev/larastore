@@ -20,6 +20,6 @@ class Order extends Model
 
     public function metas()
     {
-        return $this->hasMany('App\Models\OrderMeta');
+        return $this->hasOne('App\Models\OrderMeta');
     }
 }
