@@ -17,8 +17,11 @@ class CreateOrderMetasTable extends Migration
             $table->increments('id');
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
-            $table->string('key');
-            $table->string('value');
+            $table->json('customer');
+            $table->json('billing');
+            $table->json('shipping');
+            $table->json('cart');
+            $table->json('payment');
         });
     }
 
