@@ -33,7 +33,7 @@ class OrderProduct extends Pivot
      */
     public function setPriceAttribute($value)
     {
-        $this->attributes['price'] = $this->formatToInt($price);
+        $this->attributes['price'] = $this->formatToInt($value);
     }
 
     /**
@@ -49,6 +49,6 @@ class OrderProduct extends Pivot
      */
     public function setTotalPriceAttribute($value)
     {
-        $this->attributes['total_price'] = $this->formatToInt($price);
+        $this->attributes['total_price'] = $this->formatToInt($value);
     }
 }
