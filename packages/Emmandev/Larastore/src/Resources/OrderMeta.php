@@ -15,8 +15,11 @@ class OrderMeta extends JsonResource
     public function toArray($request)
     {
         return [
-            'key' => $this->key,
-            'value' => $this->value
+            'customer' => $this->customer,
+            'billing' => $this->billing,
+            'shipping' => $this->shipping,
+            'cart' => $this->cart,
+            'payment' => $this->payment
         ];
     }
 }
