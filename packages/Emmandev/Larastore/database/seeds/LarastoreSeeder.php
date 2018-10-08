@@ -60,6 +60,19 @@ class LarastoreSeeder extends Seeder
 
         // loop through the orders and
         $orders->each(function ($order) use ($products) {
+            // get this order's user
+            $user = App\Models\User::find($order->user_id);
+
+            // create order meta
+            $meta = $order->meta()->save(factory(App\Models\OrderMeta::class)->make());
+
+            // update customer info
+            $customer = json_decode($meta->customer);
+            $customer->name = $user->name;
+            $customer->email = $user->email;
+            $meta->customer = json_encode($customer);
+            $meta->save();
+
             // get random products with stock
             $order_products = $products->where('stock', '>', 0)->random(rand(1, 5));
 
@@ -67,7 +80,7 @@ class LarastoreSeeder extends Seeder
             if ($order_products->isEmpty()) return false;
 
             // add products to the order
-            $order_products->each(function ($product) use ($order) {
+            $order_products->each(function ($product) use ($order, $meta) {
                 // number of products to buy
                 $qty = rand(1, 10);
 
@@ -82,6 +95,13 @@ class LarastoreSeeder extends Seeder
 
                 // get total price
                 $total = $product->price * $qty;
+
+                // update cart info
+                $cart = json_decode($meta->cart);
+                $cart->cart_quantity += $qty;
+                $cart->cart_total += $total;
+                $meta->cart = json_encode($cart);
+                $meta->save();
 
                 $order->products()->attach(
                     $product->id,
