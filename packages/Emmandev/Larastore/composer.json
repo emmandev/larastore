@@ -12,7 +12,8 @@
     "homepage": "https://github.com/emmandev/larastore",
     "keywords": ["Laravel", "Larastore"],
     "require": {
-        "illuminate/support": "~5"
+        "illuminate/support": "~5",
+        "jeroennoten/laravel-adminlte": "~1.24.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
