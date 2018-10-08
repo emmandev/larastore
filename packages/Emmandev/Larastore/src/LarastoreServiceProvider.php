@@ -83,6 +83,12 @@ class LarastoreServiceProvider extends ServiceProvider
         $this->app->singleton('larastore', function ($app) {
             return new Larastore;
         });
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\InstallCommand::class
+            ]);
+        }
     }
 
     /**
