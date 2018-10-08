@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\OrderMetaCollection;
+use App\Http\Resources\OrderMeta as OrderMetaResource;
 use App\Http\Resources\OrderProductCollection;
 use App\Http\Resources\User as UserResource;
 
@@ -41,7 +41,7 @@ class Order extends JsonResource
         $wrap = self::$wrap ?? 'data';
 
         return [$wrap => [
-            'metas' => OrderMetaCollection::make($this->metas),
+            'meta' => new OrderMetaResource($this->meta),
             'products' => OrderProductCollection::make($this->products),
             'user' => new UserResource($this->user)
         ]];
