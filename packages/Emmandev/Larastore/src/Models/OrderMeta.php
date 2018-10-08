@@ -69,4 +69,54 @@ class OrderMeta extends Model
 
         ];
     }
+
+    public function getCustomerAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setCustomerAttribute($value)
+    {
+        $this->attributes['customer'] = json_encode($value);
+    }
+
+    public function getBillingAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setBillingAttribute($value)
+    {
+        $this->attributes['billing'] = json_encode($value);
+    }
+
+    public function getShippingAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setShippingAttribute($value)
+    {
+        $this->attributes['shipping'] = json_encode($value);
+    }
+
+    public function getCartAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setCartAttribute($value)
+    {
+        $this->attributes['cart'] = json_encode($value);
+    }
+
+    public function getPaymentAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function setPaymentAttribute($value)
+    {
+        $this->attributes['payment'] = json_encode($value);
+    }
 }
